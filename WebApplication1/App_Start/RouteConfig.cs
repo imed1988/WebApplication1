@@ -26,13 +26,10 @@ namespace WebApplication1
                 new { controller = "Article", action = "ByReleaseDatechar" },
                 new { year=@"\d{4}", month=@"\d{2}"});
 
-            //Custom Route : Intervalle entre deux dates Attribute Routing
 
-            routes.MapRoute(
-               "ArticleByReleasePeriodDate",
-               "Article/release/{year}/{month}",
-               new { controller = "Article", action = "ByReleaseDatePeriod" },
-               new { year = @"2017|2018", month = @"\d{2}" });
+
+            // Recherche entre intervalle de dates
+            routes.MapMvcAttributeRoutes();
 
 
 

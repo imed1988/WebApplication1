@@ -54,9 +54,8 @@ namespace WebApplication1.Controllers
             return Content(year + "/" + month);
         }
 
-        //ByReleaseDatePeriod
-
-        public ActionResult ByReleaseDatePeriod(int year, int month)
+       [Route("Article/released/{year}/{month:regex(\\d{4}):range(1,12)}")]
+        public ActionResult ByReleaseYear(int year, int month)
         {
             return Content(year + "/" + month);
         }
