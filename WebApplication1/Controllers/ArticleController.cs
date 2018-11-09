@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
+using WebApplication1.ViewModels;
 
 namespace WebApplication1.Controllers
 {
@@ -12,8 +13,32 @@ namespace WebApplication1.Controllers
         // GET: Article
         public ActionResult Random()
         {
-            var article = new Article() { DesignationArticle = "SOUFFI GAFSA GI" };
-            return View(article);
+            //var article = new Article() { DesignationArticle = "SOUFFI GAFSA GI" };
+
+            var magazin = new Magasin() { NomMagasin = "Matieres Premieres" };
+
+            // Passing data parameters
+            //ViewData["Article"] = article;
+
+            var arts = new List<Article> {
+                new Article{RefArticle="A1",
+                    DesignationArticle ="A1",
+                    UniteArticle="KG" },
+                  new Article{RefArticle="A2",
+                    DesignationArticle ="A2",
+                    UniteArticle="KG" }
+
+            };
+
+            var viewModel = new RandomArticleViewModel {
+                magasin = magazin,
+                articles=arts
+            };
+
+
+
+            //return View();
+            return View(viewModel);
             //return Content("Hello World");
             //return HttpNotFound();
             //return new EmptyResult();

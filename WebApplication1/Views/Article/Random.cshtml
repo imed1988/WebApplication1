@@ -1,7 +1,39 @@
-﻿@model WebApplication1.Models.Article
+﻿@using WebApplication1.ViewModels
+@model WebApplication1.ViewModels.RandomArticleViewModel
 @{
     ViewBag.Title = "Random";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.DesignationArticle</h2>
+@* this is a multiple comments*@
+
+
+
+<!-- si l'article est commandé au moins 5 fois -->
+@{ 
+    var className = Model.articles.Count > 0 ? "popular" : null;
+
+}
+
+<h2 class="@className">@Model.magasin.NomMagasin</h2>
+@*<h2>@(((Article)ViewData["Article"]).DesignationArticle)</h2>*@
+
+<!-- Pas de commande  -->
+@if (Model.articles.Count == 0)
+{
+    <text>Pas de commande pour cette article</text>
+}
+else
+{
+    <ul>
+        @foreach (var article in Model.articles)
+        {
+            <li>@article.RefArticle @article.DesignationArticle @article.UniteArticle</li>
+
+        }
+
+    </ul>
+
+
+}
+
